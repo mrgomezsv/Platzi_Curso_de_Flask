@@ -6,6 +6,7 @@
     <title>
         {% block title %}Flask Platzi | Bienvenido a la página de {{ user_name }} {% endblock %}
     </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 </head>
 <body>
     <header>
