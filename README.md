@@ -31,6 +31,12 @@ Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [py
 ### Ejecución
 
    Ejecución
+
+   Podemos activar el modo Debug para ver los cambios en tiempo real.
+   Aplica para Windows:
+
+      $env:FLASK_DEBUG = 1
+
    Ejecuta la aplicación con el siguiente comando:
 
       flask run
