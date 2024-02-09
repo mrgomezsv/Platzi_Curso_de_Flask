@@ -8,8 +8,13 @@
 {% endblock %}
 
 {% block content %}
+    {% if username %}
+        <h1>Bienvenido {{ username  }}</h1>
+        <!-- <h1>Bienvenido {{ username  | capitalize }}</h1>  si quisiera poner la primera en mayusculas-->
+    {% endif %}
+
     {% if user_ip %}
-        <h1>Mario Roberto, tu IP es {{ user_ip }}</h1>
+        <h3>Tu IP es {{ user_ip }}</h3>
     {% else %}
         <a href="{{ url_for('index') }}">Ir a inicio</a>
     {% endif %}
