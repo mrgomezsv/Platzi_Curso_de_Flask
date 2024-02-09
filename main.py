@@ -1,5 +1,9 @@
 from flask import Flask, request, make_response, redirect, render_template, session
 from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms.fields import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
+
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app) #Inicializamos bootstrap
@@ -7,6 +11,11 @@ bootstrap = Bootstrap(app) #Inicializamos bootstrap
 app.config['SECRET_KEY'] = 'SUPER SECRETO' #Estos nos ayuda a generar una sesion en flask
 
 todos = ['Comprar Café', 'Enviar Solicitudes de Comrpa', 'Entregar video al productor']
+
+class LoginForm(FlaskForm):
+    username = StringField('Nombre de Usuario', validators=())
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Enviar')
 
 @app.errorhandler(404)
 def not_found(error):
@@ -28,9 +37,11 @@ def index():
 def hello():
     # user_ip = request.cookies.get('user_ip')
     user_ip = session.get('user_ip')
+    Login_form = LoginForm()
     context = {
         'user_ip': user_ip,
         'todos': todos,
+        'login_form': Login_form
     }
 
     #return 'Mario Roberto, tu IP es {}'.format(user_ip)

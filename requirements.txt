@@ -9,3 +9,4 @@ MarkupSafe==2.1.5
 werkzeug==3.0.1
 zipp==3.17.0
 flask-bootstrap
+flask-wtf
