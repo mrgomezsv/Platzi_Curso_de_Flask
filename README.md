@@ -41,6 +41,10 @@ Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [py
 
       flask run
 
+   Ejecuta los test con el siguiente comando:
+
+      flask test
+
    La aplicación estará disponible en http://127.0.0.1:5000. En tu navegador
 
 
