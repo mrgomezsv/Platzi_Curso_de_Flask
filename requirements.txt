@@ -11,3 +11,4 @@ zipp==3.17.0
 flask-bootstrap
 flask-wtf
 flask-testing
+blinker

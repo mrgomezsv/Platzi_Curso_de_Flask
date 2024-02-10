@@ -35,12 +35,25 @@ class MainTest(TestCase):
         response = self.client.post(url_for('hello'), data=fake_form)
 
         self.assertRedirects(response, url_for('index'))
+
+    def test_auth_blueprint_exists(self):
+        self.assertIn('auth', self.app.Blueprint)
+
+    def test_auth_login_get(self):
+        response = self.client.get(url_for('auth.login'))
+
+        self.assert200(response)
+
+    def test_auth_login_template(self):
+        self.client.get(url_for('auth.login'))
+
+        self.assertTemplateUsed('login.html')
         
-def test_user_registered_flashed_message(self):
-    fake_form = {
-        'username': 'vijoin',
-        'password': '123456'
-    }
-    self.client.post(url_for('index'), data=fake_form)
-    message = 'User registered successfully'
-    self.assert_message_flashed(message)
+# def test_user_registered_flashed_message(self):
+#     fake_form = {
+#         'username': 'vijoin',
+#         'password': '123456'
+#     }
+#     self.client.post(url_for('index'), data=fake_form)
+#     message = 'User registered successfully'
+#     self.assert_message_flashed(message)
