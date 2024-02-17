@@ -9,7 +9,7 @@
 
 {% block content %}
     {% if username %}
-        <h1>Bienvenido {{ username  }}</h1>
+        <h1>Bienvenido, {{ username }}</h1>
         <!-- <h1>Bienvenido {{ username  | capitalize }}</h1>  si quisiera poner la primera en mayusculas-->
     {% endif %}
 
@@ -19,13 +19,13 @@
         <a href="{{ url_for('index') }}">Ir a inicio</a>
     {% endif %}
 
-    <div class="container">
+    <!-- <div class="container"> -->
         <!--<form action="{{ url_for('hello')}}" method="POST">-->
             <!--{{ login_form.username }}-->
             <!--{{ login_form.username.label }}-->
         <!--</form>-->
-        {{ wtf.quick_form(login_form) }}
-    </div>
+        <!-- {{ wtf.quick_form(login_form) }} -->
+    <!-- </div> -->
 
     <ul>
         {% for todo in todos %}

@@ -14,7 +14,7 @@ app = create_app()
 
 # app.config['SECRET_KEY'] = 'SUPER SECRET' #Estos nos ayuda a generar una sesion en flask
 
-todos = ['Comprar Café', 'Enviar Solicitudes de Comrpa', 'Entregar video al productor']
+todos = ['Comprar cafe', 'Enviar solicitudes de Compra', 'Entregar video a productor ']
 
 # class LoginForm(FlaskForm):
 #     username = StringField('Nombre de Usuario', validators=())
@@ -23,46 +23,47 @@ todos = ['Comprar Café', 'Enviar Solicitudes de Comrpa', 'Entregar video al pro
     
 @app.cli.command()
 def test():
-    test = unittest.TestLoader().discover('test')
-    unittest.TextTestRunner().run(test)
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html', error=error)
 
 @app.errorhandler(500)
-def not_found(error):
+def server_error(error):
     return render_template('500.html', error=error)
     
 @app.route('/')
 def index():
     user_ip = request.remote_addr
-    response = make_response(redirect(url_for('hello')))
+    response = make_response(redirect('/hello'))
     # response.set_cookie('user_ip', user_ip)
     session['user_ip'] = user_ip
     return response
 
-@app.route('/hello', methods=['GET', 'POST'])
+@app.route('/hello', methods=['GET'])
 def hello():
     # user_ip = request.cookies.get('user_ip')
     user_ip = session.get('user_ip')
-    Login_form = LoginForm()
+    # Login_form = LoginForm()
     username = session.get('username')
 
     context = {
         'user_ip': user_ip,
         'todos': todos,
-        'login_form': Login_form,
+        'login_form': LoginForm(),
         'username': username
     }
 
-    if Login_form.validate_on_submit():
-        username = Login_form.username.data
-        session['username'] = username
-        
-        flash('Nombre de usuario registrado con éxito!!!')
 
-        return redirect(url_for('index'))
+    # if Login_form.validate_on_submit():
+    #     username = Login_form.username.data
+    #     session['username'] = username
+        
+    #     flash('Nombre de usuario registrado con éxito!!!')
+
+    #     return redirect(url_for('index'))
 
     #return 'Mario Roberto, tu IP es {}'.format(user_ip)
     return render_template('hello.html', **context)
