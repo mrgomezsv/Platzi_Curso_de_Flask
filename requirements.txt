@@ -12,3 +12,4 @@ flask-bootstrap
 flask-wtf
 flask-testing
 blinker
+firebase-admin

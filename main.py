@@ -7,6 +7,7 @@ import unittest
 
 from app import create_app
 from app.forms import LoginForm
+from app.firestore_service import get_users, get_todos
 
 app = create_app()
 # app = Flask(__name__)
@@ -55,6 +56,12 @@ def hello():
         'login_form': LoginForm(),
         'username': username
     }
+    
+    users = get_users()
+
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
 
 
     # if Login_form.validate_on_submit():

@@ -48,6 +48,25 @@ Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [py
    La aplicación estará disponible en http://127.0.0.1:5000. En tu navegador
 
 
+### Comandos de GCP (Google Cloud Platform)
+
+   Listar los proyectos
+
+      gcloud config list
+
+   Seleccionar un proyecto en concreto
+
+      gcloud config set project platzi-flask-mrgomez
+
+   Login de usuario de Google
+
+      gcloud auth login    
+
+   Elegir la aplicación por default de nuestro proyecto, con este comando vamos a poder correr desde nuestro servidor local y comunicarnos con nuestra db
+
+      gcloud auth application-default login 
+
+
 # ¡Gracias por tu interés en este proyecto!
 
 ## Att: Mario Roberto
